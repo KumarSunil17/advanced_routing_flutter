@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 ///
 class ProfilePage extends GetResponsiveView<ProfileController> {
   static const routeName = '/profile';
+  static const pathName = '/home/profile';
 
   ProfilePage({super.key});
   @override

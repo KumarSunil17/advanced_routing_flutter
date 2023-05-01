@@ -16,8 +16,12 @@ class AuthCheckMiddleware extends GetMiddleware {
       userController.updateUser(token);
       return route;
     } else {
-      return RouteDecoder.fromRoute(
-          LoginPage.getPath(route.pageSettings?.path));
+      if (route.pageSettings?.path == LoginPage.routeName) {
+        return route;
+      } else {
+        return RouteDecoder.fromRoute(
+            LoginPage.getPath(route.pageSettings?.path));
+      }
     }
   }
 }

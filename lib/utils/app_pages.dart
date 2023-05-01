@@ -7,6 +7,7 @@ import 'package:advanced_routing_flutter/pages/login/login_controller.dart';
 import 'package:advanced_routing_flutter/pages/login/login_page.dart';
 import 'package:advanced_routing_flutter/pages/profile/profile_controller.dart';
 import 'package:advanced_routing_flutter/pages/profile/profile_page.dart';
+import 'package:advanced_routing_flutter/pages/root/root_page.dart';
 import 'package:advanced_routing_flutter/pages/settings/settings_controller.dart';
 import 'package:advanced_routing_flutter/pages/settings/settings_page.dart';
 import 'package:advanced_routing_flutter/pages/unknown/unknown_page.dart';
@@ -27,47 +28,60 @@ class AppPages {
 
   static final pages = [
     GetPage(
-        name: LoginPage.routeName,
-        page: () => LoginPage(),
-        middlewares: [
-          NoAuthCheckMiddleware(),
-        ],
-        binding: LoginBinding()),
-    GetPage(
-        name: SettingsPage.routeName,
-        page: () => SettingsPage(),
-        binding: SettingsBinding()),
-    GetPage(
-      name: DashboardPage.routeName,
-      page: () => DashboardPage(),
-      binding: DashboardBinding(),
-      title: null,
-      middlewares: [
-        AuthCheckMiddleware(),
-      ],
-      children: [
-        GetPage(
-            name: HomePage.routeName,
-            page: () => HomePage(),
-            participatesInRootNavigator: false,
-            binding: HomeBinding()),
-        GetPage(
-            name: ExplorePage.routeName,
-            page: () => ExplorePage(),
-            participatesInRootNavigator: false,
-            binding: ExploreBinding()),
-        GetPage(
-            name: ProfilePage.routeName,
-            page: () => ProfilePage(),
-            participatesInRootNavigator: false,
-            binding: ProfileBinding()),
-      ],
-    ),
-    GetPage(
-        name: UserPage.routeName,
-        page: () => UserPage(),
+        name: RootPage.routeName,
+        preventDuplicates: true,
         participatesInRootNavigator: true,
-        middlewares: [AuthCheckMiddleware()],
-        binding: UserBinding()),
+        page: () => RootPage(),
+        middlewares: [
+          AuthCheckMiddleware(),
+        ],
+        children: [
+          GetPage(
+              name: LoginPage.routeName,
+              page: () => LoginPage(),
+              participatesInRootNavigator: true,
+              middlewares: [
+                NoAuthCheckMiddleware(),
+              ],
+              binding: LoginBinding()),
+          GetPage(
+              name: SettingsPage.routeName,
+              page: () => SettingsPage(),
+              participatesInRootNavigator: true,
+              binding: SettingsBinding()),
+          GetPage(
+              name: UserPage.routeName,
+              page: () => UserPage(),
+              participatesInRootNavigator: true,
+              middlewares: [AuthCheckMiddleware()],
+              binding: UserBinding()),
+          GetPage(
+            name: DashboardPage.routeName,
+            page: () => DashboardPage(),
+            binding: DashboardBinding(),
+            participatesInRootNavigator: true,
+            title: null,
+            middlewares: [
+              AuthCheckMiddleware(),
+            ],
+            children: [
+              GetPage(
+                  name: HomePage.pathName,
+                  page: () => HomePage(),
+                  participatesInRootNavigator: false,
+                  binding: HomeBinding()),
+              GetPage(
+                  name: ExplorePage.pathName,
+                  page: () => ExplorePage(),
+                  participatesInRootNavigator: false,
+                  binding: ExploreBinding()),
+              GetPage(
+                  name: ProfilePage.pathName,
+                  page: () => ProfilePage(),
+                  participatesInRootNavigator: false,
+                  binding: ProfileBinding()),
+            ],
+          ),
+        ]),
   ];
 }

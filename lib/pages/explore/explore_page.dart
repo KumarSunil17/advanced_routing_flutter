@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 ///
 class ExplorePage extends GetResponsiveView<ExploreController> {
   static const routeName = '/explore';
+  static const pathName = '/home/explore';
 
   ExplorePage({super.key});
   @override

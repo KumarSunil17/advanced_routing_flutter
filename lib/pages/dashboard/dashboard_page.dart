@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:advanced_routing_flutter/pages/dashboard/dashboard_controller.dart';
 import 'package:advanced_routing_flutter/pages/explore/explore_page.dart';
 import 'package:advanced_routing_flutter/pages/home/home_page.dart';
@@ -10,7 +12,7 @@ import 'package:get/get.dart';
 /// On 29-04-2023 11:24 pm
 ///
 class DashboardPage extends GetResponsiveView<DashboardController> {
-  static const routeName = '/';
+  static const routeName = '/home';
 
   DashboardPage({super.key});
   @override
@@ -21,6 +23,7 @@ class DashboardPage extends GetResponsiveView<DashboardController> {
           final delegate = context.navigation;
           final currentLocation = context.location;
           int currentIndex = 0;
+          log("HEHE ${currentLocation}");
           if (currentLocation.startsWith(ExplorePage.routeName) == true) {
             currentIndex = 1;
           }
@@ -37,7 +40,7 @@ class DashboardPage extends GetResponsiveView<DashboardController> {
                   onDestinationSelected: (value) {
                     switch (value) {
                       case 0:
-                        delegate.toNamed(HomePage.routeName);
+                        delegate.toNamed(DashboardPage.routeName);
                         break;
                       case 1:
                         delegate.toNamed(ExplorePage.routeName);
@@ -75,10 +78,10 @@ class DashboardPage extends GetResponsiveView<DashboardController> {
                   child: GetRouterOutlet(
                     anchorRoute: DashboardPage.routeName,
                     initialRoute: HomePage.routeName,
-                    delegate: Get.nestedKey(DashboardPage.routeName),
-                    filterPages: (afterAnchor) {
-                      return afterAnchor.take(1);
-                    },
+                    // delegate: Get.nestedKey(DashboardPage.routeName),
+                    // filterPages: (afterAnchor) {
+                    //   return afterAnchor.take(1);
+                    // },
                   ),
                 ),
               ],

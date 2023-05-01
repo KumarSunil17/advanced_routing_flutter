@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 ///
 class HomePage extends GetResponsiveView<HomeController> {
   static const routeName = '/dashboard';
+  static const pathName = '/home/dashboard';
 
   HomePage({super.key});
   @override
