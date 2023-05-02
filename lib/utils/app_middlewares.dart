@@ -7,9 +7,6 @@ import 'package:get/get.dart';
 class AuthCheckMiddleware extends GetMiddleware {
   @override
   Future<RouteDecoder?> redirectDelegate(RouteDecoder route) async {
-    print(
-        "redirectDelegate ${route.pageSettings?.name} ${route.pageSettings?.path} ${LoginPage.getPath(route.pageSettings?.name)}");
-
     final userController = Get.isRegistered<ProfileController>()
         ? Get.find<ProfileController>()
         : Get.put<ProfileController>(ProfileController(), permanent: true);
