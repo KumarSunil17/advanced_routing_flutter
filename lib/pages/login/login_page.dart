@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 class LoginPage extends GetResponsiveView<LoginController> {
   static const routeName = '/login';
   static String getPath(String? redirectUrl) =>
-      '$routeName?redirectUrl=${Uri.encodeQueryComponent(redirectUrl ?? HomePage.routeName)}';
+      '$routeName?redirectUrl=${Uri.encodeQueryComponent((redirectUrl?.isNotEmpty ?? false) ? redirectUrl! : HomePage.routeName)}';
 
   LoginPage({super.key});
 

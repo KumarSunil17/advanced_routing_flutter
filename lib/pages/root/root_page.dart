@@ -1,5 +1,6 @@
 import 'package:advanced_routing_flutter/pages/dashboard/dashboard_page.dart';
 import 'package:advanced_routing_flutter/pages/root/root_controller.dart';
+import 'package:advanced_routing_flutter/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +19,17 @@ class RootPage extends GetResponsiveView<RootController> {
       delegate: Get.nestedKey(null),
       builder: (context) {
         return Scaffold(
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(bottom: 32),
+            child: FloatingActionButton(
+              onPressed: () {
+                if (Get.currentRoute != SettingsPage.routeName) {
+                  Get.toNamed(SettingsPage.routeName);
+                }
+              },
+              child: const Icon(Icons.settings_outlined),
+            ),
+          ),
           body: GetRouterOutlet(
             initialRoute: DashboardPage.routeName,
             delegate: Get.nestedKey(null),

@@ -32,9 +32,6 @@ class AppPages {
         preventDuplicates: true,
         participatesInRootNavigator: true,
         page: () => RootPage(),
-        middlewares: [
-          AuthCheckMiddleware(),
-        ],
         children: [
           GetPage(
               name: LoginPage.routeName,
@@ -47,12 +44,10 @@ class AppPages {
           GetPage(
               name: SettingsPage.routeName,
               page: () => SettingsPage(),
-              participatesInRootNavigator: true,
               binding: SettingsBinding()),
           GetPage(
               name: UserPage.routeName,
               page: () => UserPage(),
-              participatesInRootNavigator: true,
               middlewares: [AuthCheckMiddleware()],
               binding: UserBinding()),
           GetPage(

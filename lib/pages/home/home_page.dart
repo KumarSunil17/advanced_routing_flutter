@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 /// On 29-04-2023 11:24 pm
 ///
 class HomePage extends GetResponsiveView<HomeController> {
-  static const routeName = '/dashboard';
-  static const pathName = '/home/dashboard';
+  static const routeName = '/home/dashboard';
+  static const pathName = '/dashboard';
 
   HomePage({super.key});
   @override

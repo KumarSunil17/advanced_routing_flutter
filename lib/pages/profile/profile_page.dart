@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 /// On 29-04-2023 11:24 pm
 ///
 class ProfilePage extends GetResponsiveView<ProfileController> {
-  static const routeName = '/profile';
-  static const pathName = '/home/profile';
+  static const routeName = '/home/profile';
+  static const pathName = '/profile';
 
   ProfilePage({super.key});
   @override

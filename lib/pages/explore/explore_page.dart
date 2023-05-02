@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 /// On 29-04-2023 11:24 pm
 ///
 class ExplorePage extends GetResponsiveView<ExploreController> {
-  static const routeName = '/explore';
-  static const pathName = '/home/explore';
+  static const routeName = '/home/explore';
+  static const pathName = '/explore';
 
   ExplorePage({super.key});
   @override
